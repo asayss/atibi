@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل الأطباء - المغرب</title>
+    <title>دليل الخدمات الطبية - المنصة الطبية الشاملة في المغرب</title>
     <style>
         * {
             margin: 0;
@@ -16,18 +16,23 @@
             background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             min-height: 100vh;
             padding: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
         }
 
         .container {
             max-width: 480px;
+            width: 100%;
             margin: 0 auto;
         }
 
         .header {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            margin-bottom: 20px;
+            justify-content: center;
+            margin-bottom: 40px;
             padding: 20px;
             background: linear-gradient(135deg, #1976d2, #2196f3);
             border-radius: 15px;
@@ -48,19 +53,14 @@
             z-index: 1;
             cursor: pointer;
             transition: all 0.3s ease;
+            font-size: 30px;
         }
-
+      
         .header-icon img {
             width: 60px;
             height: 60px;
             object-fit: contain;
-        }
-
-        .header-icon:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.95);
-        }
+       }
 
         .header-text {
             text-align: center;
@@ -73,298 +73,390 @@
             margin-bottom: 5px;
         }
 
-        .header-text p {
+        .header-description {
             color: rgba(255, 255, 255, 0.9);
             font-size: 14px;
-        }
-
-        .header-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            align-items: flex-end;
-        }
-
-        .home-btn {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            color: white;
-            padding: 8px;
-            border-radius: 50%;
-            text-decoration: none;
-            font-size: 18px;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            backdrop-filter: blur(10px);
-            cursor: pointer;
-        }
-
-        .home-btn:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .register-btn-top {
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            white-space: nowrap;
-        }
-
-        .register-btn-top:hover {
-            background: rgba(255, 255, 255, 0.3);
-            border-color: rgba(255, 255, 255, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .search-section {
-            margin-bottom: 20px;
-        }
-
-        .search-box {
-            position: relative;
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .search-input {
-            flex: 1;
-            padding: 12px 15px;
-            border: 2px solid #e1f5fe;
-            border-radius: 25px;
-            font-size: 16px;
-            background: white;
-            transition: all 0.3s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: #2196f3;
-            box-shadow: 0 0 10px rgba(33, 150, 243, 0.3);
-        }
-
-        .search-btn {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, #2196f3, #1976d2);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .search-btn:hover {
-            background: linear-gradient(135deg, #1976d2, #0d47a1);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
-        }
-
-        .city-filter {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            margin-top: 10px;
-            position: relative;
-        }
-
-        .city-btn {
-            padding: 6px 12px;
-            background: white;
-            border: 2px solid #e1f5fe;
-            border-radius: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #1976d2;
-            font-weight: 600;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .city-btn:hover, .city-btn.active {
-            background: linear-gradient(135deg, #2196f3, #1976d2);
-            border-color: #2196f3;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .more-cities-btn {
-            padding: 6px 12px;
-            background: white;
-            border: 2px solid #e1f5fe;
-            border-radius: 20px;
-            font-size: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #1976d2;
-            font-weight: 600;
-            white-space: nowrap;
-            flex-shrink: 0;
-        }
-
-        .more-cities-btn:hover {
-            background: linear-gradient(135deg, #2196f3, #1976d2);
-            border-color: #2196f3;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        .hidden-cities {
-            display: none;
-            gap: 8px;
-            flex-wrap: wrap;
-            width: 100%;
-        }
-
-        .hidden-cities.show {
-            display: flex;
-        }
-
-        .doctor-card {
-            background: white;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .doctor-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        .doctor-info {
-            padding: 20px;
-        }
-
-        .doctor-name {
-            font-size: 20px;
-            font-weight: bold;
-            color: #0d47a1;
-            margin-bottom: 8px;
-        }
-
-        .doctor-specialty {
-            color: #1976d2;
-            font-size: 16px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .doctor-address {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 15px;
             line-height: 1.4;
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 8px;
-            margin-top: 15px;
+        .main-content {
+            margin-bottom: 40px;
         }
 
-        .btn {
-            flex: 1;
-            padding: 10px 8px;
-            border: none;
-            border-radius: 8px;
-            font-size: 12px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        .main-button {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
             text-decoration: none;
+            display: block;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+            transition: all 0.3s ease;
             text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+
+        .main-button:hover {
+            background: linear-gradient(135deg, #1976d2, #0d47a1);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.6);
+        }
+
+        .button-description {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .button-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 4px;
-            min-height: 40px;
+            gap: 10px;
         }
 
-        .btn-directions {
-            background: linear-gradient(135deg, #2196f3, #1976d2);
-            color: white;
-        }
-
-        .btn-directions:hover {
-            background: linear-gradient(135deg, #1976d2, #0d47a1);
-            transform: translateY(-2px);
-        }
-
-        .btn-phone {
+        .service-button {
             background: linear-gradient(135deg, #4caf50, #388e3c);
             color: white;
-        }
-
-        .btn-phone:hover {
-            background: linear-gradient(135deg, #388e3c, #2e7d32);
-            transform: translateY(-2px);
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-        }
-
-        .btn-whatsapp:hover {
-            background: linear-gradient(135deg, #128c7e, #075e54);
-            transform: translateY(-2px);
-        }
-
-        .icon {
-            font-size: 14px;
-        }
-
-        .no-results {
+            padding: 15px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+            transition: all 0.3s ease;
             text-align: center;
-            padding: 40px 20px;
-            color: #666;
-            font-size: 16px;
+            border: none;
+            cursor: pointer;
         }
 
-        .register-btn-bottom {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, #2196f3, #1976d2);
+        .service-button:hover {
+            background: linear-gradient(135deg, #388e3c, #2e7d32);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(76, 175, 80, 0.6);
+        }
+
+        .service-button.pharmacy {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+        }
+
+        .service-button.pharmacy:hover {
+            background: linear-gradient(135deg, #f57c00, #ef6c00);
+            box-shadow: 0 6px 20px rgba(255, 152, 0, 0.6);
+        }
+
+        .service-button.clinic {
+            background: linear-gradient(135deg, #e91e63, #c2185b);
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+        }
+
+        .service-button.clinic:hover {
+            background: linear-gradient(135deg, #c2185b, #ad1457);
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.6);
+        }
+
+        .service-button.lab {
+            background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+            box-shadow: 0 4px 15px rgba(156, 39, 176, 0.4);
+        }
+
+        .service-button.lab:hover {
+            background: linear-gradient(135deg, #7b1fa2, #6a1b9a);
+            box-shadow: 0 6px 20px rgba(156, 39, 176, 0.6);
+        }
+
+        .service-button .button-description {
+            font-size: 13px;
+            margin-bottom: 5px;
+        }
+
+        .service-button .button-title {
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .service-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
+
+        .registration-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .registration-main-btn {
+            background: linear-gradient(135deg, #673ab7, #512da8);
             color: white;
-            padding: 15px 25px;
+            padding: 18px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: block;
+            box-shadow: 0 4px 15px rgba(103, 58, 183, 0.4);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .registration-main-btn:hover {
+            background: linear-gradient(135deg, #512da8, #4527a0);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(103, 58, 183, 0.6);
+        }
+
+        .bottom-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .small-button {
+            background: rgba(255, 255, 255, 0.9);
+            color: #1976d2;
+            padding: 12px 18px;
             border-radius: 25px;
             text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            box-shadow: 0 6px 20px rgba(33, 150, 243, 0.4);
+            font-size: 13px;
+            font-weight: 600;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
-            z-index: 1000;
+            border: 2px solid transparent;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
         }
 
-        .register-btn-bottom:hover {
-            background: linear-gradient(135deg, #1976d2, #0d47a1);
-            transform: translateX(-50%) translateY(-3px);
-            box-shadow: 0 8px 25px rgba(33, 150, 243, 0.6);
+        .small-button:hover {
+            background: white;
+            border-color: #2196f3;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .welcome-text {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .welcome-text h2 {
+            color: #0d47a1;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .welcome-text p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* Modal styles for social sharing */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: white;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .modal-header {
+            color: #1976d2;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .social-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+            justify-items: center;
+        }
+
+        .social-button {
+            padding: 15px;
+            border-radius: 15px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+        }
+
+        .social-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .social-button.facebook { background: #1877f2; }
+        .social-button.whatsapp { background: #25d366; }
+        .social-button.twitter { background: #1da1f2; }
+        .social-button.instagram { background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d); }
+        .social-button.linkedin { background: #0077b5; }
+        .social-button.gmail { background: #ea4335; }
+        .social-button.telegram { background: #0088cc; }
+
+        .url-section {
+            margin-bottom: 20px;
+            text-align: right;
+        }
+
+        .url-container {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .close-button {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .close-button:hover {
+            background: #d32f2f;
+            transform: translateY(-1px);
+        }
+
+        .more-info {
+            background: #2196f3;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .more-info:hover {
+            background: #1976d2;
+            transform: translateY(-1px);
+        }
+
+        /* Registration modal styles */
+        .registration-modal-content {
+            background: linear-gradient(135deg, #673ab7, #512da8);
+            color: white;
+            position: relative;
+            margin: 10% auto;
+            padding: 30px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .registration-options {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .registration-option {
+            background: rgba(255, 255, 255, 0.15);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 18px 20px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+        }
+
+        .registration-option:hover {
+            background: rgba(255, 255, 255, 0.25);
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .registration-option .option-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            flex-shrink: 0;
+        }
+
+        .registration-option .option-icon img {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+        }
+
+        .registration-option .option-text {
+            flex: 1;
+            text-align: right;
+            font-weight: 600;
+            font-size: 16px;
         }
 
         @media (max-width: 400px) {
@@ -379,59 +471,130 @@
             .header-icon {
                 width: 50px;
                 height: 50px;
-            }
-
-            .header-icon img {
-                width: 35px;
-                height: 35px;
+                font-size: 25px;
             }
 
             .header-text h1 {
                 font-size: 20px;
             }
 
-            .header-text p {
+            .header-description {
                 font-size: 12px;
             }
 
-            .home-btn {
-                width: 35px;
-                height: 35px;
+            .main-button {
+                padding: 18px 15px;
+            }
+
+            .button-title {
                 font-size: 16px;
             }
 
-            .register-btn-top {
-                font-size: 11px;
-                padding: 5px 10px;
+            .button-description {
+                font-size: 13px;
             }
-            
-            .doctor-name {
+
+            .service-button {
+                padding: 12px 15px;
+            }
+
+            .service-button .button-title {
+                font-size: 15px;
+            }
+
+            .bottom-buttons {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .small-button {
+                font-size: 12px;
+                padding: 10px 15px;
+                min-width: 120px;
+                justify-content: center;
+            }
+
+            .welcome-text {
+                padding: 15px;
+                margin-bottom: 25px;
+            }
+
+            .welcome-text h2 {
                 font-size: 18px;
             }
-            
-            .action-buttons {
-                flex-direction: column;
-                gap: 8px;
+
+            .welcome-text p {
+                font-size: 13px;
             }
-            
-            .btn {
-                margin-bottom: 0;
-                font-size: 14px;
+
+            .social-buttons {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+
+            .social-button {
+                width: 50px;
+                height: 50px;
                 padding: 12px;
             }
 
-            .city-filter {
-                gap: 5px;
+            .registration-section {
+                padding: 15px;
             }
 
-            .city-btn, .more-cities-btn {
-                font-size: 11px;
-                padding: 5px 8px;
+            .registration-modal-content {
+                padding: 20px;
+                margin: 15% auto;
             }
 
-            .hidden-cities {
-                margin-top: 8px;
-                gap: 5px;
+            .registration-option {
+                padding: 15px;
+                gap: 12px;
+            }
+
+            .registration-option .option-text {
+                font-size: 14px;
+            }
+        }
+
+        /* تأثيرات الحركة */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .fade-in:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in:nth-child(4) { animation-delay: 0.4s; }
+        .fade-in:nth-child(5) { animation-delay: 0.5s; }
+        .fade-in:nth-child(6) { animation-delay: 0.6s; }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 400px) {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 12px;
             }
         }
     </style>
@@ -439,934 +602,412 @@
 <body>
     <div class="container">
         <div class="header">
-            <div class="header-icon" onclick="goBack()">
-                <img src="data/icon.png" alt="أيقونة دليل الأطباء">
+            <div class="header-icon" onclick="animateIcon()">
+                <img src="data/icon.png" alt="أيقونة دليل الخدمات الطبية">
             </div>
             <div class="header-text">
-                <h1>دليل الأطباء</h1>
-                <p>المغرب</p>
+               <h1>دليل الخدمات الطبية</h1>
+                <p class="header-description">
+                    المنصة الطبية الشاملة الأولى في المغرب<br>
+                    أطباء • صيدليات • مصحات • مختبرات
+                </p>
             </div>
-            <div class="header-controls">
-                <div class="home-btn" onclick="goBack()">
-                    🏠
-                </div>
-                <a href="#" class="register-btn-top" onclick="openRegistrationForm()">
-                    طلب تسجيل طبيب
+        </div>
+
+        <div class="welcome-text fade-in">
+            <h2>مرحباً بك في دليل الخدمات الطبية الشامل</h2>
+            <p>منصتك الموثوقة للوصول إلى جميع الخدمات الطبية في المغرب. ابحث عن الأطباء، الصيدليات، المصحات والمختبرات بسهولة وسرعة في جميع أنحاء المملكة.</p>
+        </div>
+
+        <div class="main-content">
+            <div class="services-grid">
+                <a href="#" class="service-button fade-in" onclick="openDoctorsDirectory()">
+                    <div class="button-description">ابحث عن الطبيب المناسب</div>
+                    <div class="button-title">
+                        <img src="data/emoji/1.png" alt="دليل الأطباء" class="service-icon">
+                        دليل الأطباء
+                    </div>
+                </a>
+
+                <a href="#" class="service-button pharmacy fade-in" onclick="openPharmaciesDirectory()">
+                    <div class="button-description">اعثر على أقرب صيدلية</div>
+                    <div class="button-title">
+                        <img src="data/emoji/2.png" alt="دليل الصيدليات" class="service-icon">
+                        دليل الصيدليات
+                    </div>
+                </a>
+
+                <a href="#" class="service-button clinic fade-in" onclick="openClinicsDirectory()">
+                    <div class="button-description">المصحات والمراكز الطبية</div>
+                    <div class="button-title">
+                        <img src="data/emoji/3.png" alt="دليل المصحات" class="service-icon">
+                        دليل المصحات
+                    </div>
+                </a>
+
+                <a href="#" class="service-button lab fade-in" onclick="openLabsDirectory()">
+                    <div class="button-description">المختبرات والتحاليل الطبية</div>
+                    <div class="button-title">
+                        <img src="data/emoji/4.png" alt="دليل المختبرات" class="service-icon">
+                        دليل المختبرات
+                    </div>
                 </a>
             </div>
-        </div>
 
-        <div class="search-section">
-            <div class="search-box">
-                <input type="text" class="search-input" placeholder="ابحث عن طبيب أو تخصص..." id="searchInput">
-                <button class="search-btn" onclick="performSearch()">
-                    🔍
+            <div class="registration-section fade-in">
+                <button class="registration-main-btn" onclick="openRegistrationModal()">
+                    <img src="data/emoji/5.png" alt="طلب التسجيل" style="width: 20px; height: 20px; margin-left: 8px; vertical-align: middle;">
+                    طلب التسجيل في المنصة
                 </button>
             </div>
-            
-            <div class="city-filter">
-                <button class="city-btn active" data-city="الكل">الكل</button>
-                <button class="city-btn" data-city="الدار البيضاء">الدار البيضاء</button>
-                <button class="city-btn" data-city="أكادير">أكادير</button>
-                <button class="city-btn" data-city="الرباط">الرباط</button>
-                <button class="more-cities-btn" onclick="toggleMoreCities()">...</button>
-                
-                <div class="hidden-cities" id="hiddenCities">
-                    <button class="city-btn" data-city="فاس">فاس</button>
-                    <button class="city-btn" data-city="مراكش">مراكش</button>
-                    <button class="city-btn" data-city="طنجة">طنجة</button>
-                    <button class="city-btn" data-city="مكناس">مكناس</button>
-                </div>
-            </div>
         </div>
 
-        <div id="doctorsList">
-            <!-- Doctor Cards will be inserted here -->
-        </div>
-
-        <div id="noResults" class="no-results" style="display: none;">
-            لا توجد نتائج مطابقة للبحث
+        <div class="bottom-buttons fade-in">
+            <a href="#" class="small-button" onclick="showAppInfo()">
+                <span>💡</span>
+                حول التطبيق
+            </a>
+            <a href="#" class="small-button" onclick="shareApp()">
+                <span>🔗</span>
+                مشاركة
+            </a>
+            <a href="#" class="small-button" onclick="rateApp()">
+                <span>⭐</span>
+                تقييم التطبيق
+            </a>
         </div>
     </div>
 
-    <a href="#" class="register-btn-bottom" onclick="openRegistrationForm()">
-        👨‍⚕️ طلب تسجيل طبيب 
-    </a>
+    <!-- Modal for social sharing -->
+    <div id="shareModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">شارك التطبيق</div>
+            
+            <!-- App URL for copying -->
+            <div class="url-section">
+                <label for="appUrl" style="display: block; margin-bottom: 8px; color: #1976d2; font-weight: bold; font-size: 14px;">رابط التطبيق:</label>
+                <div class="url-container">
+                    <input type="text" id="appUrl" readonly style="flex: 1; padding: 8px; border: 2px solid #e0e0e0; border-radius: 8px; background: #f5f5f5; font-size: 12px; color: #333;">
+                    <button onclick="copyAppUrl()" style="padding: 8px 12px; background: #2196f3; color: white; border: none; border-radius: 8px; margin-right: 8px; cursor: pointer; font-size: 12px; font-weight: bold;">نسخ</button>
+                </div>
+            </div>
+
+            <div class="social-buttons">
+                 <a href="#" class="social-button facebook" onclick="shareToFacebook()" title="Facebook">
+                    <img src="data/emoji/facebook.png" alt="Facebook" style="width: 50px; height: 50px;">
+                </a>
+                <a href="#" class="social-button whatsapp" onclick="shareToWhatsApp()" title="WhatsApp">
+                    <img src="data/emoji/whatsapp.png" alt="WhatsApp" style="width: 50px; height: 50px;">
+                </a>
+                <a href="#" class="social-button twitter" onclick="shareToTwitter()" title="Twitter">
+                    <img src="data/emoji/twitter.png" alt="Twitter" style="width: 50px; height: 50px;">
+                </a>
+                <a href="#" class="social-button instagram" onclick="shareToInstagram()" title="Instagram">
+                    <img src="data/emoji/instagram.png" alt="Instagram" style="width: 50px; height: 50px;">
+                </a>
+                <a href="#" class="social-button linkedin" onclick="shareToLinkedIn()" title="LinkedIn">
+                    <img src="data/emoji/linkedin.png" alt="LinkedIn" style="width: 50px; height: 50px;">
+                </a>
+                <a href="#" class="social-button gmail" onclick="shareToGmail()" title="Gmail">
+                    <img src="data/emoji/gmail.png" alt="Gmail" style="width: 50px; height: 50px;">
+                </a>
+                <a href="#" class="social-button telegram" onclick="shareToTelegram()" title="Telegram">
+                    <img src="data/emoji/telegram.png" alt="Telegram" style="width: 50px; height: 50px;">
+                </a>
+            </div>
+            <button class="close-button" onclick="closeShareModal()">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- Modal for app info -->
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">دليل الخدمات الطبية - معلومات التطبيق</div>
+            <div style="text-align: right; color: #333; line-height: 1.6; font-size: 14px;">
+                <p><strong>🎯 الهدف:</strong> توفير دليل شامل لجميع الخدمات الطبية في المغرب</p>
+                <br>
+                <p><strong>✨ الخدمات المتاحة:</strong></p>
+                <p>🩺 <strong>دليل الأطباء:</strong> أطباء معتمدون في جميع التخصصات</p>
+                <p>💊 <strong>دليل الصيدليات:</strong> صيدليات مرخصة ومواعيد العمل</p>
+                <p>🏥 <strong>دليل المصحات:</strong> مراكز طبية ومصحات متخصصة</p>
+                <p>🔬 <strong>دليل المختبرات:</strong> مختبرات التحاليل الطبية</p>
+                <br>
+                <p><strong>⚡ المميزات:</strong></p>
+                <p>• بحث سهل ومتقدم حسب المدينة والتخصص</p>
+                <p>• معلومات اتصال مباشرة وخرائط GPS</p>
+                <p>• أوقات العمل ومعلومات مفصلة</p>
+                <p>• تقييمات وآراء المستخدمين</p>
+                <p>• إمكانية حجز المواعيد مباشرة</p>
+                <br>
+                <p><strong>📱 التطبيق متاح للجميع مجاناً</strong></p>
+                <p><strong>🔒 جميع مقدمي الخدمات معتمدون ومرخصون</strong></p>
+            </div>
+            <button class="more-info" onclick="openPlayStore()">عرض المزيد في متجر التطبيقات</button>
+            <button class="close-button" onclick="closeInfoModal()">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- Modal for registration options -->
+    <div id="registrationModal" class="modal">
+        <div class="registration-modal-content">
+            <div class="modal-header" style="color: white; margin-bottom: 15px;">
+                <img src="data/emoji/5.png" alt="التسجيل" style="width: 30px; height: 30px; margin-bottom: 10px;">
+                <br>
+                طلب التسجيل في المنصة
+            </div>
+            <p style="color: rgba(255, 255, 255, 0.9); font-size: 14px; margin-bottom: 25px;">
+                اختر نوع الخدمة التي تريد تسجيلها في منصتنا الطبية الشاملة
+            </p>
+            
+            <div class="registration-options">
+                <a href="#" class="registration-option" onclick="registerAsDoctor()">
+                    <div class="option-icon">
+                        <img src="data/emoji/1.png" alt="طبيب">
+                    </div>
+                    <div class="option-text">
+                        التسجيل كطبيب
+                    </div>
+                </a>
+                
+                <a href="#" class="registration-option" onclick="registerAsPharmacy()">
+                    <div class="option-icon">
+                        <img src="data/emoji/2.png" alt="صيدلية">
+                    </div>
+                    <div class="option-text">
+                        التسجيل كصيدلية
+                    </div>
+                </a>
+                
+                <a href="#" class="registration-option" onclick="registerAsClinic()">
+                    <div class="option-icon">
+                        <img src="data/emoji/3.png" alt="مصحة">
+                    </div>
+                    <div class="option-text">
+                        التسجيل كمصحة
+                    </div>
+                </a>
+                
+                <a href="#" class="registration-option" onclick="registerAsLab()">
+                    <div class="option-icon">
+                        <img src="data/emoji/4.png" alt="مختبر">
+                    </div>
+                    <div class="option-text">
+                        التسجيل كمختبر
+                    </div>
+                </a>
+            </div>
+            
+            <button class="close-button" onclick="closeRegistrationModal()" style="margin-top: 20px;">إغلاق</button>
+        </div>
+    </div>
 
     <script>
-        const doctors = [
-            {
-                name: "الدكتورة أجروج حسناء ",
-                specialty: "أخصائية الأمراض النفسية والعصبية",
-                address: "تقاطع عقبة ابنو نافع و شارع الحزام الكبير، إقامة الدورادو 2، الطابق الثاني، الرقم 10 ( بالمصعد ) ( أمام محطة طرامواي المداكرة ) ( أمام محطة وينكسو ). الحي المحمدي 20022 الدار البيضاء المغرب",
-                phone: " +212 522 61 61 66 ",
-                whatsapp: " +212 675 74 38 24",
-                coordinates: "تقاطع عقبة ابنو نافع و شارع الحزام الكبير، إقامة الدورادو 2،  الحي المحمدي 20022 الدار البيضاء المغرب ",
-                city: "الدار البيضاء"
-            },
-            {
-                name: "الدكتورة الصحراوي هدى ",
-                specialty: "أخصائية أمراض المفاصل والعظام والروماتيزم",
-                address: "شارع الحسن الأول ، حي المسيرة ، عمارة أمل أنزي الطابق الثاني ، مكتب رقم 7 - أكاديرحي الداخلة أكادير المغرب",
-                phone: "+212 528 22 17 37",
-                whatsapp: " +212 611 24 44 07",
-                coordinates: "شارع الحسن الأول ، حي المسيرة ، عمارة أمل أنزي  - أكاديرحي الداخلة أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتور ياسين لمغاري ",
-                specialty: "أخصائي أمراض المفاصل والعظام والروماتيزم",
-                address: "مكتب 3 الطابق الأول ، رقم 95 عمارة جبل مكة - إنزكانInezgane 80350 أكادير المغرب",
-                phone: " +212 528 33 18 82 ",
-                whatsapp: "+212 708 23 02 20 ",
-                coordinates: "مكتب 3 الطابق الأول ، رقم 95 عمارة جبل مكة - إنزكانInezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            { 
-                name: "الدكتورة سعدية الحساني ",
-                specialty: "أخصائي الامراض التنفسية ( الرئوية) ",
-                address: "إقامة الحكونية الطابق الأول أمام محطة المسافرين انزكانInezgane 80350 أكادير المغرب",
-                phone: "+212 528 83 88 00 ",
-                whatsapp: "+212 528 83 88 00 ",
-                coordinates: "إقامة الحكونية  أمام محطة المسافرين انزكانInezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور الحاج البترة ",
-                specialty: "أخصائي الأمراض النفسية والعصبية",
-                address: "الطابق الأول رقم 19 زنقة البكاي الحي الصناعي، أمام صيدلية الشعب - أكاديرAgadir Principal 80000 أكادير المغرب",
-                phone: " +212 620 92 26 09 ",
-                whatsapp: " +212 638 67 36 75 ",
-                coordinates: "ا زنقة البكاي الحي الصناعي، أمام صيدلية الشعب - أكاديرAgadir Principal 80000 أكادير المغرب",
-                city: "أكادير"
-            },
-            {   
-                name: "الدكتورة كوثر المشاشتي ",
-                specialty: "أخصائي الأمراض النفسية والعصبية",
-                address: "قاطع شارع الحسن الثاني و عبد الرحيم بوعبيد ، إقامة برج الدلالات الطابق الثالث العمارة 1 حي الباطوار - أكاديرAgadir Quartier Industriel 80004 أكادير المغرب",
-                phone: "+212 528 82 82 59",
-                whatsapp: "+212 671 50 76 61 ",
-                coordinates: "قاطع شارع الحسن الثاني و عبد الرحيم بوعبيد ، إقامة برج الدلالات  العمارة 1 حي الباطوار - أكاديرAgadir Quartier Industriel 80004 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة سكينة تقي الدين",
-                specialty: "أخصائي الأمراض النفسية والعصبية",
-                address: "الطابق الأول مكتب رقم 3 إقامة برج الحكمة شارع الحسن الأول - أكادير Al massira أكادير المغرب ",
-                phone: " +212 05282-25697 ",
-                whatsapp: " +212 05282-25697 ",
-                coordinates: " إقامة برج الحكمة شارع الحسن الأول - أكادير Al massira أكادير المغرب ",
-                city: "أكادير"
-            },
-            {   
-
-                name: "السيدة زينب وبيدن ",
-                specialty: "أخصائي الأمراض النفسية والعصبية",
-                address: "شارع المقاومة إقامة ياسمين بلوك B الطابق الخامس رقم 25 - أكادير Avenue Al Mokaouama أكادير المغرب",
-                phone: " +212 644 32 00 10 ",
-                whatsapp: " +212 644 32 00 10 ",
-                coordinates: "شارع المقاومة إقامة ياسمين بلوك B  - أكادير Avenue Al Mokaouama أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-               name: "الدكتور لحسن الجاحظ ",
-                specialty: "أخصائي أمراض الأنف والأذن والحنجرة",
-                address: "إقامة الحرية رقم 45 الطابق الأول، شقة رقم 2 - انزكانInezgane 80350 أكادير المغرب",
-                phone: "+212 528 33 02 11",
-                whatsapp: "+212 528 33 02 11",
-                coordinates: "إقامة الحرية رقم 45  - انزكانInezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور فيصل الواقف ",
-                specialty: "أخصائي أمراض الأنف والأذن والحنجرة",
-                address: "شارع محمد السادس بلوك 2 , عمارة النخيل , ايت ملول - (طريق بيوكرى بالقرب من مخبزة تافراوت)Ait Melloul 80150 أكادير المغرب",
-                phone: " +212 528 24 55 55 ",
-                whatsapp: " +212 528 24 55 55 ",
-                coordinates: "شارع محمد السادس بلوك 2 , عمارة النخيل الطابق الأول , ايت ملول - (طريق بيوكرى بالقرب من مخبزة تافراوت)Ait Melloul 80150 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور حسن صباح ",
-                specialty: "أخصائي أمراض الأنف والأذن والحنجرة",
-                address: "اقامة بيشا الطابق الثاني، طريق تزنيت - ايت ملولAit Melloul 80150 أكادير المغرب",
-                phone: " +212 528 24 80 50 ",
-                whatsapp: " +212 528 24 80 50 ",
-                coordinates: "اقامة بيشا الطابق الثاني، طريق تزنيت - ايت ملولAit Melloul 80150 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة ندى بركاش ",
-                specialty: "أخصائي طب الأطفال ",
-                address: "شارع الحسن الثاني إقامة الإخوان الطابق الثاني ، شقة 4 الجهادية إنزكانEljihadia,Inzegan أكادير المغرب",
-                phone: " +212 5282-72540",
-                whatsapp: " +212 659 83 11 91",
-                coordinates: "شارع الحسن الثاني إقامة الإخوان  الجهادية إنزكانEljihadia,Inzegan أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور القيامي ياسين ",
-                specialty: "أخصائي طب الأطفال",
-                address: "رقم 33 ، بالقرب من مصحة الوازيس حي تالبورجت - أكاديرAgadir Talborjt 80005 أكادير المغرب",
-                phone: " +212 529 11 77 31",
-                whatsapp: "+212 775 22 59 75 ",
-                coordinates: "رقم 33 ، بالقرب من مصحة الوازيس حي تالبورجت - أكاديرAgadir Talborjt 80005 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة سامية عيساوي ",
-                specialty: "أخصائي طب الأطفال",
-                address: "شارع الحسن الثاني عمارة افران 3 رقم 33 الطابق 4 قرب محطة الطاكسيات لباطوار - أكاديرشارع الحسن الثاني أكادير المغرب",
-                phone: " +212 528 84 24 73",
-                whatsapp: " +212 528 84 24 73",
-                coordinates: "شارع الحسن الثاني عمارة افران   قرب محطة الطاكسيات لباطوار - أكادير شارع الحسن الثاني أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور محمد سعيد صبار ",
-                specialty: "أخصائي طب الأطفال",
-                address: "إقامة M1 الرقم 8 ، الطابق الثالث شارع مولاي عبد الله تالبورجت- أكاديرAgadir Talborjt 80005 أكادير المغرب",
-                phone: " +212 528 82 47 15 ",
-                whatsapp: " +212 528 82 47 15 ",
-                coordinates: "إقامة M1 الرقم 8 ، الطابق الثالث شارع مولاي عبد الله تالبورجت- أكاديرAgadir Talborjt 80005 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور ابراهيم احساين",
-                specialty: "أخصائي أمراض الكلى ",
-                address: "جزئة V 289 , بالقرب من المحافظة العقارية شارع الرمل - انزكان-الدشيرةINZGANE أكادير المغرب",
-                phone: " +212 528 33 66 53 ",
-                whatsapp: " +212 528 33 66 53 ",
-                coordinates: "جزئة V 289 , بالقرب من المحافظة العقارية شارع الرمل - انزكان-الدشيرةINZGANE أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور عبد الرحيم راكمي ",
-                specialty: "أخصائي أمراض الكلى ",
-                address: "فيلا رقم 87 , تجزئة الدشيرة الجهادية 80352- انزكان (بالقرب من مرجان انزكان)Eljihadia,Inzegan أكادير المغرب",
-                phone: " +212 528 33 66 66 ",
-                whatsapp: " +212 619 80 44 52",
-                coordinates: "فيلا رقم 87 , تجزئة الدشيرة الجهادية 80352- انزكان (بالقرب من مرجان انزكان)Eljihadia,Inzegan أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة زينب شرفاء ",
-                specialty: "أخصائية الامراض العصبية",
-                address: "رقم 2 , الطابق الأول، عمارة نور وورك سبايس, شارع 29 فبراير تالبورجت - أكادير تالبورجت أكادير المغرب",
-                phone: "",
-                whatsapp: "",
-                coordinates: " عمارة نور وورك سبايس, شارع 29 فبراير تالبورجت - أكادير تالبورجت أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور ياسين مالك ",
-                specialty: "أخصائي طب العيون",
-                address: "رقم 237 ، المكتب رقم 105 ، الطابق الأول ، مبنى Haut Founty ، بلوك A فونتي - أكادير80000 كادير المغرب",
-                phone: " +212 528 39 08 39 ",
-                whatsapp: " +212 666 44 51 51 ",
-                coordinates: " ، مبنى Haut Founty ، بلوك A فونتي - أكادير80000 كادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور علاء الدين سني",
-                specialty: "أخصائي طب العيون",
-                address: "عمارة الرحمة ، رقم 34 الطابق 3 شارع الحسن الثاني - الدشيرة الجهادية -إنزكان أيت ملول - أكاديرInezgane 80350 أكادير المغرب",
-                phone: "+212 528 33 38 37 ",
-                whatsapp: "+212 660 07 77 68 ",
-                coordinates: "عمارة الرحمة ،  شارع الحسن الثاني - الدشيرة الجهادية -إنزكان أيت ملول - أكاديرInezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور عبد الحليم فائز ",
-                specialty: "أخصائي طب العيون",
-                address: "زنقة 8 مركز الأعمال الموكار بلوك A الطابق الأول - الدشيرة أكاديرAgadir Principal 80000 أكادير المغرب",
-                phone: " +212 528 27 28 28",
-                whatsapp: " +212 625 27 28 28 ",
-                coordinates: "زنقة 8 مركز الأعمال الموكار بلوك A - الدشيرة أكاديرAgadir Principal 80000 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور شهصم عصام الواية ",
-                specialty: "أخصائي طب العيون ",
-                address: "انزكانInezgane 80350 أكادير المغرب",
-                phone: "+212 528 84 88 48 ",
-                whatsapp: "+212 681 87 21 97 ",
-                coordinates: "انزكانInezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {   
-                 name: "الدكتور بنيونس رياح",
-                specialty: "أخصائي أمراض النساء والتوليد",
-                address: "شارع علال بن عبد الله بالقرب من صيدلية الطاهري تالبورجت - أكاديرAgadir Talborjt 80005 أكادير المغرب",
-                phone: " +212 528 84 82 59 ",
-                whatsapp: " +212 528 84 82 59 ",
-                coordinates: "شارع علال بن عبد الله بالقرب من صيدلية الطاهري تالبورجت - أكاديرAgadir Talborjt 80005 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة حسناء الفائز",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "شارع الحسن الثاني إقامة إفران 4 الطابق الأول - أكاديرAgadir Principal 80000 أكادير المغرب",
-                phone: "+212 528 82 04 20 ",
-                whatsapp: "+212 528 82 04 20 ",
-                coordinates: "شارع الحسن الثاني إقامة إفران 4  - أكاديرAgadir Principal 80000 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة هناء مرجان",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "الطابق الرابع ، عمارة بنزيان، شارع الحسن الثاني قرب كارفور و ديفاكتو - أكادير شارع الحسن الثاني أكادير المغرب",
-                phone: "+212 528 84 84 36 ",
-                whatsapp: " +212 662 38 68 91 ",
-                coordinates: "الطابق الرابع ، عمارة بنزيان، شارع الحسن الثاني قرب كارفور و ديفاكتو - أكادير شارع الحسن الثاني أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة ليلى ايت إيدر",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "عمارة أمل أنزي الطابق الثالث ، شقة 11 رقم 1887 شارع الحسن الأول المسيرة - أكادير Agadir Principal 80000 أكادير المغرب",
-                phone: "+212 528 21 73 19 ",
-                whatsapp: "+212 528 21 73 19 ",
-                coordinates: "عمارة أمل أنزي ،  شارع الحسن الأول المسيرة - أكادير Agadir Principal 80000 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة نجاة العلوي",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "إقامة برج الدلالات زاوية شارع عبد الرحيم بوعبيد و الحسن الثاني - أكادير شارع الحسن الثاني أكادير المغرب",
-                phone: " +212 528 84 68 68 ",
-                whatsapp: " +212 661 06 07 99",
-                coordinates: "إقامة برج الدلالات زاوية شارع عبد الرحيم بوعبيد و الحسن الثاني - أكادير شارع الحسن الثاني أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور محمد أمين إنزال",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "رقم 6 شارع الجيش الملكي ، حي تالبورجت - أكادير شارع الجيش الملكي أكادير المغرب",
-                phone: " +212 528 84 84 80 ",
-                whatsapp: " +212 528 84 84 80 ",
-                coordinates: "رقم 6 شارع الجيش الملكي ، حي تالبورجت - أكاديرشارع الجيش الملكي أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة سارة وهبي",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "عمارة 73 ملتقى شارع 11 يناير و شارع 3 مارس الطابق الأول الحي الحسني (قرب مصحة تغزوت) - انزكانInezgane 80350 أكادير المغرب",
-                phone: " +212 528 33 33 72",
-                whatsapp: " +212 694 22 60 77 ",
-                coordinates: "عمارة 73 ملتقى شارع 11 يناير و شارع 3 مارس  الحي الحسني (قرب مصحة تغزوت) - انزكان Inezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور محمد مرؤوف",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "شارع الحسن الثاني عمارة إفران 2 الطابق الثاني- أكاديرAgadir Principal 80000 أكادير المغرب",
-                phone: " +212 528 84 80 18 ",
-                whatsapp: " +212 662 54 45 10 ",
-                coordinates: "شارع الحسن الثاني عمارة إفران 2 الطابق الثاني- أكاديرAgadir Principal 80000 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة بشرى بنوردي",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "حي الهدى 17/ l ، تقاطع شارع عبد الله الكرسيفي و شارع بن محفوظ اليعقوبي ( أمام ثانوية أجدير ) مكتب رقم 6، 7 الكابق الثاني ( بالمصعد)Al houda أكادير المغرب",
-                phone: "+212 808 68 25 52 ",
-                whatsapp: " +212 663 36 01 33",
-                coordinates: "حي الهدى 17/  ، تقاطع شارع عبد الله الكرسيفي و شارع بن محفوظ اليعقوبي ( أمام ثانوية أجدير ) Al houda أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور عرابي الحسين",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "عمارة الرحمة رقم 34 ، الطابق الأول مكتب رقم 1 شارع الحسن الثاني الدشيرة الجهادية - إنزكانInezgane 80350 أكادير المغرب",
-               phone: " +212 528 21 21 21 ",
-                whatsapp: "+212 661 86 83 04",
-                coordinates: "عمارة الرحمة رقم 34 ،شارع الحسن الثاني الدشيرة الجهادية - إنزكانInezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور أشرف الدوازي",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "3330، مكتب رقم 5، الطابق الثالث (المعصد متوفر)، شارع الدار البيضاء، الحي المحمدي - أكاديرHay Mohammadi أكادير المغرب",
-                phone: " +212 525 29 40 42 ",
-                whatsapp: " +212 674 78 76 08 ",
-                coordinates: "3330، مكتب رقم 5،  شارع الدار البيضاء، الحي المحمدي - أكاديرHay Mohammadi أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور مروان الصائغ ",
-               specialty: "أخصائي أمراض النساء والتوليد",
-                address: "شارع الحسن الأول إقامة ديار الطابق الأول مكتب رقم 306 بالقرب من كارفور الداخلة - أكاديرحي الداخلة أكادير المغرب",
-                phone: "212 528 82 82 71 ",
-                whatsapp: " +212 612 59 33 88",
-                coordinates: "شارع الحسن الأول إقامة ديار  بالقرب من كارفور الداخلة - أكاديرحي الداخلة أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                 name: "الدكتورة مها ودغيري",
-                specialty: "أخصائية الغدد الصماء والسكري  ",
-                address: "الطابق الأول، ملتقى شارع 29 فبراير و شارع الشيخ السعدي، عمارة مرحبا - تالبورجتAgadir Talborjt 80005 أكادير المغرب",
-                phone: " +212 528 82 18 18  ",
-                whatsapp: " +212 654 36 39 33 ",
-                coordinates: "، ملتقى شارع 29 فبراير و شارع الشيخ السعدي، عمارة مرحبا - تالبورجتAgadir Talborjt 80005 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتور لحسن حيدا",
-                specialty: "أخصائي أمراض السكري  ",
-                address: "11 شارع المقاومة (طريق أدميم سابقا) قرب محطة أفريقيا ايت ملول - أكاديرAit Melloul 80150 أكادير المغرب",
-                phone: "+212 528 24 05 95  ",
-                whatsapp: "+212 528 24 05 95 ",
-                coordinates: "11 شارع المقاومة (طريق أدميم سابقا) قرب محطة أفريقيا ايت ملول - أكاديرAit Melloul 80150 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتور أحمد بداهي",
-                specialty: "أخصائي أمراض السكري  ",
-                address: "الطابق الثاني، عمارة اموران، زنقة فندق المدينة أكادير",
-                phone: "+212 (0) 5 28 84 21 82 ",
-                whatsapp: "+212 (0) 5 28 84 21 82",
-                coordinates: " عمارة اموران، زنقة فندق المدينة أكادير",
-                city: "أكادير"
-            },
-            {
-
-                name: "دكتورة محاسن مونيري",
-                specialty: "أخصائي في أمراض السكري, و التغذية العلاجية, أخصائي في الغدد الصماء  ",
-                address: "Boulevard Hassan Ii, Appt N 6 - Imm Oumlil , En face Royal tennis club agadir, 80000, أكادير, المغرب",
-                phone: "+212 000000 ",
-                whatsapp: "+212 000000",
-                coordinates: "Boulevard Hassan Ii, Appt N 6 - Imm Oumlil , En face Royal tennis club agadir, 80000, أكادير, المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة اناس اكوزال",
-                specialty: "طب الاسنان  ",
-                address: "شارع الحسن الثاني، حي الأمان، إقامة الإخوان، الطابق الأول، الشقة رقم 2 - الدشيرة الجهادية، إنزكان 80000Inezgane 80350 أكادير المغرب",
-                phone: " +212 0528 33 28 80  ",
-                whatsapp: "+212 663 02 25 05",
-                coordinates: "شارع الحسن الثاني، حي الأمان، إقامة الإخوان، - الدشيرة الجهادية، إنزكان 80000Inezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتورة حسناء بومعاز",
-                specialty: "طب الاسنان  ",
-                address: "إقامة النجاح ، عمارة الحرية رقم 45  الطابق الثاني مكتب رقم 4 - إنزكانInezgane 80350 أكادير المغرب",
-                phone: "+212 525 35 75 95  ",
-                whatsapp: " +212 775 03 24 02 ",
-                coordinates: "إقامة النجاح ، عمارة الحرية رقم 45 - إنزكانInezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتور ازور صباح",
-                specialty: "طب الاسنان  ",
-                address: "عمارة 141 ، شقة رقم 3 شارع الحسن الثاني - الدشيرة الجهاديةInezgane 80350 أكادير المغرب",
-                phone: " +212 528 33 32 22  ",
-                whatsapp: " +212 662 63 20 25 ",
-                coordinates: "عمارة 141 ، شقة رقم 3 شارع الحسن الثاني - الدشيرة الجهاديةInezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتور هشام مسعودي",
-                specialty: "طب الاسنان  ",
-                address: "الدراركةDrargua أكادير المغرب",
-                phone: " +212 529 15 50 05 ",
-                whatsapp: "+212 780 00 98 66 ",
-                coordinates: "الدراركةDrargua أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتور عمر بورقية",
-                specialty: "طب الاسنان  ",
-                address: "12 Rue Med Boufous 1er étage N 04 Talborjt- Agadir.تالبورجت أكادير المغرب",
-                phone: " +212 05 28 84 74 64  ",
-                whatsapp: " +212 06 55 51 51 08 ",
-                coordinates: "12 Rue Med Boufous  Talborjt- Agadir.تالبورجت أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-               name: "الدكتور حسن الشهيد",
-                specialty: "الطب العام  ",
-                address: "شارع عبد الرحيم بو عابد ، شارع 2 مارس امسرنات ، بجوار صيدلية الحمراء - أكاديرAgadir Quartier Industriel 80004 أكادير المغرب",
-                phone: "+212 528 22 80 91  ",
-                whatsapp: "+212 528 22 80 91 ",
-                coordinates: "شارع عبد الرحيم بو عابد ، شارع 2 مارس امسرنات ، بجوار صيدلية الحمراء - أكاديرAgadir Quartier Industriel 80004 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتورة لبنى بوركانا",
-                specialty: "الطب العام  ",
-                address: "رقم 9 شارع الحسن الثاني , حي الحسني تغزوت - انزكان ( امام كلينيك تغزوت )Inezgane 80350 أكادير المغرب",
-                phone: " +212 529 51 24 96  ",
-                whatsapp: " +212 661 45 89 60",
-                coordinates: "رقم 9 شارع الحسن الثاني , حي الحسني تغزوت - انزكان ( امام كلينيك تغزوت )Inezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور سعيد غيلان",
-                specialty: "الطب العام",
-                address: "شارع غاندي رقم 65 حي الداخلة - أكاديرحي الداخلة أكادير المغرب",
-                phone: " +212 528 22 14 50 ",
-                whatsapp: " +212 528 22 14 50 ",
-                coordinates: "شارع غاندي رقم 65 حي الداخلة - أكاديرحي الداخلة أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتور لحسن حيدا",
-                specialty: "الطب العام",
-                address: "11 شارع المقاومة (طريق أدميم سابقا) قرب محطة أفريقيا ايت ملول - أكاديرAit Melloul 80150 أكادير المغرب",
-                phone: " +212 528 24 05 95 ",
-                whatsapp: " +212 528 24 05 95 ",
-                coordinates: "11 شارع المقاومة (طريق أدميم سابقا) قرب محطة أفريقيا ايت ملول - أكاديرAit Melloul 80150 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور عبد الكريم كركاش ",
-                specialty: "الطب العام",
-                address: "الطابق الأول، إقامة الإخوان، رقم 80 شارع الحسن الثاني، الدشيرة الجهادية Inezgane 80350 أكادير ",
-                phone: " +212528336985",
-                whatsapp: " +212528336985",
-                coordinates: "الطابق الأول، إقامة الإخوان، رقم 8شارع الحسن الثاني، الدشيرة الجهادية Inezgane 80350 أكادير المغرب",
-                city: "أكادير"
-
-            },
-            {
-
-                
-                name: "الدكتور عبد الإله نسيلة ",
-                specialty: "أخصائي الامراض الجلدية و التناسلية ",
-                address: "ملتقى زنقة مراكش و زنقة البكاي عمارة اوبيضار، بالقرب من صيدلية الشعب - أكادير Agadir Principal 80000 أكادير المغرب",
-                phone: " +212 528 84 54 41 ",
-                whatsapp: " +212 699 76 38 54 ",
-                coordinates: "ملتقى زنقة مراكش و زنقة البكاي عمارة اوبيضار، بالقرب من صيدلية الشعب - أكادير Agadir Principal 80000 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-
-                name: "الدكتورة كريمة بنجواض",
-                specialty: "أخصائية أمراض الجهاز الهضمي",
-                address: "إقامة برج الحي (Greenplus) , الطابق الثالث المكتب رقم 9 الحي المحمدي _ أكاديرAgadir Principal 80001 أكادير المغرب",
-                phone: " +212 528 22 76 29 ",
-                whatsapp: " +212 528 22 76 29 ",
-                coordinates: "إقامة برج الحي (Greenplus) ,  المكتب رقم 9 الحي المحمدي _ أكاديرAgadir Principal 80001 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور عبد اللطيف العاربي ",
-                specialty: "أخصائي أمراض الجهاز الهضمي",
-                address: "عمارة برج الحكمه الطابق الاول رقم 4 شارع الحسن الأول حي المسيرة أكاديرAl massira أكادير المغرب",
-                phone: " +212 525 06 37 58 ",
-                whatsapp: " +212 666 48 23 93 ",
-                coordinates: "عمارة برج الحكمه رقم 4 شارع الحسن الأول حي المسيرة أكاديرAl massira أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتورة إشراق شامي ",
-                specialty: "أخصائية الامراض الجلدية و التناسلية ",
-                address: "شارع محمد الخامس عمارة امنار , الطابق الرابع رقم 34 , امام بلدية انزكانInzegane أكادير المغرب",
-                phone: "+212 528 33 22 23 ",
-                whatsapp: "+212 675 63 19 15 ",
-                coordinates: "شارع محمد الخامس عمارة امنار  , امام بلدية انزكانInzegane أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتورة سعاد حنبل ",
-                specialty: "أخصائية الامراض الجلدية و التناسلية ",
-                address: "حي الداخلة شارع الحسن الأول, تمديد قرب حي السلام إقامة الديار 1 الطابق الثاني رقم 204- اكاديرحي الداخلة أكادير المغرب",
-                phone: " +212 528 29 20 90",
-                whatsapp: " +212 528 29 20 90",
-                coordinates: "حي الداخلة شارع الحسن الأول, تمديد قرب حي السلام إقامة الديار 1 - اكاديرحي الداخلة أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتورة هدى تادلي",
-                specialty: "أخصائية الامراض الجلدية و التناسلية ",
-                address: "رج الوحدة شارع محمد إقبال رقم 30 ، الطابق الثالث امسرنات - أكادير 80000",
-                phone: " +212 528 21 23 25 ",
-                whatsapp: " +212 622 22 42 35",
-                coordinates: "رج الوحدة شارع محمد إقبال رقم 30 ، امسرنات - أكادير 80000",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتورة سرى إبزر ",
-                specialty: "أخصائية الامراض الجلدية و التناسلية ",
-                address: "عمارة برج الحكمة ، الطابق الثالث رقم 09 ، شارع الحسن الأول - أكاديرAl massira أكادير المغرب",
-                phone: " +212 525 24 28 08",
-                whatsapp: " +212 649 12 91 57" ,
-                coordinates: "عمارة برج الحكمة ، شارع الحسن الأول - أكاديرAl massira أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-
-                name: "الدكتورة بشرى بناني الناصري ",
-                specialty: "أخصائية الامراض الجلدية و التناسلية ",
-                address: "عمارة سلام سنتر ، زنقة فاس الطابق الثالث رقم 307 الحي الصناعي - أكادير Agadir Principal 80000 أكادير المغرب",
-                phone: " +212 528 22 85 85  ",
-                whatsapp: " +212 661 49 34 80 ",
-                coordinates: "عمارة سلام سنتر ، زنقة فاس  الحي الصناعي - أكاديرAgadir Principal 80000 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور رشيد محاريش",
-                specialty: "أخصائي أمراض الجهاز الهضمي ",
-                address: "إقامة النجاح، عمارة الحرية، أمام سوق الحرية، الطابق الثالث (بالمصعد) - انزكانInezgane 80350 أكادير المغرب",
-                phone: " +212 528 83 79 92 ",
-                whatsapp: " +212 528 83 79 92 ",
-                coordinates: "إقامة النجاح، عمارة الحرية، أمام سوق الحرية، انزكانInezgane 80350 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور الحسن الحسني",
-                specialty: "أخصائي أمراض الجهاز الهضمي ",
-                address: "190 عمارة بيشا الطابق الثاني طريق تزنيت - ايت ملولAit Melloul 80150 أكادير المغرب",
-                phone: " +212 528 24 85 57 ",
-                whatsapp: " +212 528 24 85 57 ",
-                coordinates: "190 عمارة بيشا  طريق تزنيت - ايت ملولAit Melloul 80150 أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور خالد سعدو ",
-                specialty: "أخصائي أمراض الجهاز الهضمي ",
-                address: "محطة الطاكسيات عمارة الزهور الطابق الأول الحي الصناعي - أكاديرL’abattoir, Quartier industriel أكادير المغرب",
-                phone: "+212 528 84 78 38",
-                whatsapp: "+212 528 84 69 96",
-                coordinates: "محطة الطاكسيات عمارة الزهور  الحي الصناعي - أكاديرL’abattoir, Quartier industriel أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور نزار الطاهري",
-                specialty: "أخصائي أمراض العظـام و المفـاصـل",
-                address: "شارع المختار السوسي عمارة الفار الطابق الاول مكتب رقم 3 انزكان",
-                phone: "+212 528 33 57 57 ",
-                whatsapp: "+212 674 02 65 82",
-                coordinates: "شارع المختار السوسي عمارة الفار الطابق الاول مكتب رقم 3 انزكان",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور محمد عبد الودود",
-                specialty: "أخصائي جراحة العظام و المفاصل",
-                address: "إقامة الحكونية الطابق الثاني شارع المختار السوسي- انزكان",
-                phone: "+212 528 33 68 16 ",
-                whatsapp: "+212 662 07 84 94 ",
-                coordinates: "إقامة الحكونية الطابق الثاني شارع المختار السوسي- انزكان",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور محمد حادو",
-                specialty: "أخصائي جراحة العظام و المفاصل",
-                address: " عمارة أوسكار رقم 15، الطابق الثالث ( بالمصعد ) أمام سوق الخميس تيكوين أكادير",
-                phone: "+212 528 26 60 11",
-                whatsapp: "+212 657 34 68 86",
-                coordinates: "عمارة أوسكار رقم 15،  أمام سوق الخميس تيكوين أكادير",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور مبارك زهيدي",
-                specialty: "أخصائي جراحة العظام و المفاصل",
-                address: "رقم 14 عمارة النخيل الطابق الثالث، شارع محمد الخامس, قرب مقاطعة أمن انزكان-الدشيرة",
-                phone: "+212 528 33 22 11 ",
-                whatsapp: "+212 528 33 22 11 ",
-                coordinates: "رقم 14 عمارة النخيل ، شارع محمد الخامس, قرب مقاطعة أمن انزكان-الدشيرة",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور عبد الجليل العنايت",
-                specialty: "أخصائي أمراض العظـام و المفـاصـل",
-                address: "شارع الحسن الثاني عمارة أومليل ، مكتب 30 الطابق الرابع - أكادير",
-                phone: "+212 528 82 82 46",
-                whatsapp: "+212 528 82 82 46",
-                coordinates: "شارع الحسن الثاني عمارة أومليل ، مكتب 30 - أكادير",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور رشيد الباز",
-                specialty: "أخصائي جراحة العظام و المفاصل",
-                address: "عمارة مرحبا الطابق التاني، ملتقى شارع 29 فبراير و شارع الشيخ السعدي تالبورجت  أكادير المغرب",
-                phone: "+212 528 84 84 92 ",
-                whatsapp: "+212 528 84 84 92 ",
-                coordinates: " عمارة مرحبا  ملتقى شارع 29 فبراير و شارع الشيخ السعدي تالبورجت  أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور حمزة عيادي",
-                specialty: "أخصائي أمراض العظـام و المفـاصـل",
-                address: "برج الحكمة الطابق الرابع ، شارع الحسن الأول- أكادير المغرب",
-                phone: "+2125000000",
-                whatsapp: "+212 661 38 87 71",
-                coordinates: "برج الحكمة الطابق الرابع ، شارع الحسن الأول- أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور بوشعيب عراس",
-                specialty: "أخصائي امراض القلب و الشرايين ",
-                address: "رقم 9 عمارة ب1 إقامة ياسمين , الطابق 2 زاوية شارع القاضي عياض و شارع المقاومة - أكادير",
-                phone: "+212 528 21 22 21",
-                whatsapp: "+212 614 46 55 94",
-                coordinates: "رقم 9 عمارة ب1 إقامة ياسمين , زاوية شارع القاضي عياض و شارع المقاومة - أكادير",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة سارة بالزاع",
-                specialty: "أخصائية امراض القلب و الشرايين ",
-                address: "مكتب رقم 24 الطابق الثالث حي فونتي (فوق مقهى جرينز) - أكادير باي المغرب",
-                phone: "+2125000000",
-                whatsapp: "+2125000000",
-                coordinates: "مكتب رقم 24  حي فونتي - أكادير باي المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور مولاي رشيد البلغيتي",
-                specialty: "أخصائي امراض القلب و الشرايين ",
-                address: "اقامة سارور الطابق الأول رقم 6 , شارع الشيخ السعدي تالبورجت - أكادير",
-                phone: "+212 528 82 82 29",
-                whatsapp: "+212 528 82 82 29",
-                coordinates: "اقامة سارور  , شارع الشيخ السعدي تالبورجت - أكادير",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة ابن الشيخ خديجة",
-                specialty: "أخصائية امراض القلب و الشرايين ",
-                address: "إقامة النسيم الطابق الأول بالقرب من سوق الحرية الباب 10 - انزكان",
-                phone: "+212 528 84 85 84 ",
-                whatsapp: " +212 639 88 70 27",
-                coordinates: "إقامة النسيم  بالقرب من سوق الحرية  - انزكان",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة وسيمة بلخو",
-                specialty: "أخصائية امراض القلب و الشرايين ",
-                address: "شارع الحسن التاني، إقامة ايت سوس الطابق الثالث مكتب 11 - اكادير",
-                phone: " +212 808 66 57 70",
-                whatsapp: "+212 777 08 55 81",
-                coordinates: "شارع الحسن التاني، إقامة ايت سوس  - اكادير  المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتورة وفاء حافظ",
-                specialty: "الطب العام",
-                address: "رقم 31 , الطابق الأول الحي المحمدي  أكادير المغرب",
-                phone: "+212540152200",
-                whatsapp: "+212540152200",
-                coordinates: "رقم 31 ,  الحي المحمديHay Mohammadi أكادير المغرب",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور رشيد صالوت",
-                specialty: "الطب العام",
-                address: "اقامة رقم 3279 ، شارع الدار البيضاء شقة رقم 1 (فوق وكالة وفاكاش) الحي المحمدي - أكادير",
-                phone: "  +212525072138  ",
-                whatsapp: "+212 667 01 26 70 ",
-                coordinates: "اقامة رقم 3279 ، شارع الدار البيضاء  الحي المحمدي - أكادير",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور لحسن بشيري",
-                specialty: "أخصائي جراحة الاحشاء والجهاز الهضمي",
-                address: "شارع الحسن الثاني إقامة تيميتار رقم 106 الطابق الأول، بالقرب من محطة الطاكسيات الباطوار - أكادير",
-                phone: "+212535987654",
-                whatsapp: "+212535987654",
-                coordinates: "شارع الحسن الثاني إقامة تيميتار رقم 106 ، - أكادير",
-                city: "أكادير"
-            },
-            {
-                name: "الدكتور يوسف بوحاجب",
-                specialty: "خصائي علم الأمراض التشريحي",
-                address: "شارع الحسن الثاني ، عمارة أيت سوس الطابق الثاني - أكادير",
-                phone: "212 528 82 82 82 ",
-                whatsapp: "212 528 82 82 82 ",
-                coordinates: "شارع الحسن الثاني ، عمارة أيت سوس - أكادير",
-                city: "أكادير"
-            }
-        ];
-
-        let currentCity = "الكل";
-
-        // دالة للرجوع للصفحة السابقة
-        function goBack() {
-            if (window.history.length > 1) {
-                window.history.back();
-            } else {
-                window.close();
-            }
+        // رابط التطبيق الافتراضي في جوجل بلاي (سيتم تعديله لاحقاً)
+        const playStoreUrl = "https://play.google.com/store/apps/details?id=com.medicalguide.app";
+        
+        // دالة لتحريك الأيقونة
+        function animateIcon() {
+            const icon = document.querySelector('.header-icon');
+            icon.style.transform = 'scale(1.1) rotate(5deg)';
+            setTimeout(() => {
+                icon.style.transform = 'scale(1) rotate(0deg)';
+            }, 200);
+        }
+        
+        // دوال للتوجيه إلى صفحات الأدلة المختلفة
+        function openDoctorsDirectory() {
+            // استبدل هذا بالرابط الفعلي لدليل الأطباء
+            window.location.href = "doctors_directory.html";
         }
 
-        // دالة لفتح نموذج التسجيل
-        function openRegistrationForm() {
-            // سيتم استبدال هذا الرابط برابط نموذج Google Forms الفعلي
-            const registrationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeNRHMUqIGsbiTBFzPmaamcJTXbO398j13tMvzcXvqHZxgUKw/viewform?usp=header";
-            // فتح في نفس النافذة للحفاظ على أبعاد التطبيق
+        function openPharmaciesDirectory() {
+            // استبدل هذا بالرابط الفعلي لدليل الصيدليات
+            window.location.href = "pharmacies_directory.html";
+        }
+
+        function openClinicsDirectory() {
+            // استبدل هذا بالرابط الفعلي لدليل المصحات
+            window.location.href = "clinics_directory.html";
+        }
+
+        function openLabsDirectory() {
+            // استبدل هذا بالرابط الفعلي لدليل المختبرات
+            window.location.href = "labs_directory.html";
+        }
+
+        // دالة لفتح رسالة التسجيل المنبثقة
+        function openRegistrationModal() {
+            document.getElementById('registrationModal').style.display = 'block';
+        }
+
+        // دالة لإغلاق رسالة التسجيل المنبثقة
+        function closeRegistrationModal() {
+            document.getElementById('registrationModal').style.display = 'none';
+        }
+
+        // دوال التسجيل لكل نوع خدمة
+        function registerAsDoctor() {
+            const registrationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeNRHMUqIGsbiTBFzPmaamcJTXbO398j13tMvzcXvqHZxgUKw/viewform?usp=header&entry.123456789=doctor";
             window.open(registrationUrl, '_blank', 'width=480,height=800,scrollbars=yes,resizable=yes');
+            closeRegistrationModal();
         }
 
-        // دالة لإظهار/إخفاء المدن الإضافية
-        function toggleMoreCities() {
-            const hiddenCities = document.getElementById('hiddenCities');
-            const moreBtn = document.querySelector('.more-cities-btn');
+        function registerAsPharmacy() {
+            const registrationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeNRHMUqIGsbiTBFzPmaamcJTXbO398j13tMvzcXvqHZxgUKw/viewform?usp=header&entry.123456789=pharmacy";
+            window.open(registrationUrl, '_blank', 'width=480,height=800,scrollbars=yes,resizable=yes');
+            closeRegistrationModal();
+        }
+
+        function registerAsClinic() {
+            const registrationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeNRHMUqIGsbiTBFzPmaamcJTXbO398j13tMvzcXvqHZxgUKw/viewform?usp=header&entry.123456789=clinic";
+            window.open(registrationUrl, '_blank', 'width=480,height=800,scrollbars=yes,resizable=yes');
+            closeRegistrationModal();
+        }
+
+        function registerAsLab() {
+            const registrationUrl = "https://docs.google.com/forms/d/e/1FAIpQLSeNRHMUqIGsbiTBFzPmaamcJTXbO398j13tMvzcXvqHZxgUKw/viewform?usp=header&entry.123456789=lab";
+            window.open(registrationUrl, '_blank', 'width=480,height=800,scrollbars=yes,resizable=yes');
+            closeRegistrationModal();
+        }
+
+        // دالة لإظهار معلومات التطبيق
+        function showAppInfo() {
+            document.getElementById('infoModal').style.display = 'block';
+        }
+
+        // دالة لإغلاق modal معلومات التطبيق
+        function closeInfoModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
+
+        // دالة لفتح صفحة التطبيق في متجر جوجل بلاي
+        function openPlayStore() {
+            window.open(playStoreUrl, '_blank');
+        }
+
+        // دالة لتقييم التطبيق
+        function rateApp() {
+            window.open(playStoreUrl, '_blank');
+        }
+
+        // دالة لإظهار modal المشاركة
+        function shareApp() {
+            // تعيين رابط التطبيق في حقل النص
+            document.getElementById('appUrl').value = playStoreUrl;
+            document.getElementById('shareModal').style.display = 'block';
+        }
+
+        // دالة لنسخ رابط التطبيق
+        function copyAppUrl() {
+            const urlInput = document.getElementById('appUrl');
+            urlInput.select();
+            urlInput.setSelectionRange(0, 99999); // للجوال
             
-            if (hiddenCities.classList.contains('show')) {
-                hiddenCities.classList.remove('show');
-                moreBtn.textContent = '...';
-            } else {
-                hiddenCities.classList.add('show');
-                moreBtn.textContent = 'أقل';
-            }
-        }
-
-        // دالة لتطبيع النص للبحث (إزالة الهمزات والتشكيل)
-        function normalizeText(text) {
-            return text
-                .replace(/[أإآا]/g, 'ا')
-                .replace(/[ؤو]/g, 'و')
-                .replace(/[ئي]/g, 'ي')
-                .replace(/[ة]/g, 'ه')
-                .replace(/[ً ٌ ٍ َ ُ ِ ّ ْ]/g, '')
-                .toLowerCase();
-        }
-
-        // دالة لترتيب الأسماء العربية أبجدياً
-        function sortDoctorsAlphabetically(doctors) {
-            return [...doctors].sort((a, b) => {
-                // استخراج الاسم الأول بعد "الدكتور" أو "الدكتورة"
-                const nameA = a.name.replace(/^الدكتورة?\s+/, '').trim();
-                const nameB = b.name.replace(/^الدكتورة?\s+/, '').trim();
-                
-                return nameA.localeCompare(nameB, 'ar', { sensitivity: 'base' });
+            navigator.clipboard.writeText(urlInput.value).then(() => {
+                alert('تم نسخ رابط التطبيق! 📋');
+            }).catch(() => {
+                // في حالة فشل النسخ التلقائي
+                alert('تم تحديد الرابط. اضغط Ctrl+C لنسخه.');
             });
         }
 
-        function createDoctorCard(doctor) {
-            // تنظيف رقم الواتساب
-            const whatsappNumber = doctor.whatsapp.replace(/\s+/g, '').replace(/^\+/, '');
-            
-            return `
-                <div class="doctor-card">
-                    <div class="doctor-info">
-                        <div class="doctor-name">${doctor.name}</div>
-                        <div class="doctor-specialty">${doctor.specialty}</div>
-                        <div class="doctor-address">📍 ${doctor.address}</div>
-                        <div class="action-buttons">
-                            <a href="https://www.google.com/maps/dir/?api=1&destination=${doctor.coordinates}" 
-                               target="_blank" class="btn btn-directions">
-                                <span class="icon">🗺️</span>
-                                اتجاهات
-                            </a>
-                            <a href="tel:${doctor.phone}" class="btn btn-phone">
-                                <span class="icon">📞</span>
-                                اتصال
-                            </a>
-                            <a href="https://wa.me/${whatsappNumber}" target="_blank" class="btn btn-whatsapp">
-                                <span class="icon">💬</span>
-                                واتساب
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            `;
+        // دالة لإغلاق modal المشاركة
+        function closeShareModal() {
+            document.getElementById('shareModal').style.display = 'none';
         }
 
-        function displayDoctors(doctorsToShow) {
-            const doctorsList = document.getElementById('doctorsList');
-            const noResults = document.getElementById('noResults');
-            
-            if (doctorsToShow.length === 0) {
-                doctorsList.innerHTML = '';
-                noResults.style.display = 'block';
-            } else {
-                noResults.style.display = 'none';
-                doctorsList.innerHTML = doctorsToShow.map(doctor => createDoctorCard(doctor)).join('');
-            }
+        // دوال المشاركة عبر منصات التواصل الاجتماعي
+        function shareToFacebook() {
+            const url = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(playStoreUrl)}&quote=${encodeURIComponent('اكتشف دليل الخدمات الطبية - المنصة الشاملة للخدمات الطبية في المغرب 🏥🇲🇦')}`;
+            window.open(url, '_blank', 'width=600,height=400');
+            closeShareModal();
         }
 
-        function filterDoctors() {
-            const searchTerm = document.getElementById('searchInput').value;
-            const normalizedSearchTerm = normalizeText(searchTerm);
-            
-            let filtered = doctors.filter(doctor => {
-                const cityMatch = currentCity === "الكل" || doctor.city === currentCity;
-                
-                if (!searchTerm) return cityMatch;
-                
-                const normalizedName = normalizeText(doctor.name);
-                const normalizedSpecialty = normalizeText(doctor.specialty);
-                const normalizedAddress = normalizeText(doctor.address);
-                
-                const searchMatch = normalizedName.includes(normalizedSearchTerm) ||
-                                   normalizedSpecialty.includes(normalizedSearchTerm) ||
-                                   normalizedAddress.includes(normalizedSearchTerm);
-                
-                return cityMatch && searchMatch;
+        function shareToWhatsApp() {
+            const text = `اكتشف دليل الخدمات الطبية - المنصة الشاملة للخدمات الطبية في المغرب 🏥🇲🇦\n\nأطباء • صيدليات • مصحات • مختبرات\n\n${playStoreUrl}`;
+            const url = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+            closeShareModal();
+        }
+
+        function shareToTwitter() {
+            const text = 'اكتشف دليل الخدمات الطبية - المنصة الشاملة للخدمات الطبية في المغرب 🏥🇲🇦';
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(playStoreUrl)}`;
+            window.open(url, '_blank', 'width=600,height=400');
+            closeShareModal();
+        }
+
+        function shareToInstagram() {
+            // Instagram لا يدعم المشاركة المباشرة للروابط، لذا سننسخ الرابط
+            const text = `اكتشف دليل الخدمات الطبية - المنصة الشاملة للخدمات الطبية في المغرب 🏥🇲🇦\n\nأطباء • صيدليات • مصحات • مختبرات\n\n${playStoreUrl}`;
+            navigator.clipboard.writeText(text).then(() => {
+                alert('تم نسخ النص! 📋\nيمكنك لصقه في منشور Instagram الخاص بك.');
+            }).catch(() => {
+                prompt('انسخ النص التالي لمشاركته في Instagram:', text);
             });
+            closeShareModal();
+        }
+
+        function shareToLinkedIn() {
+            const url = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(playStoreUrl)}`;
+            window.open(url, '_blank', 'width=600,height=400');
+            closeShareModal();
+        }
+
+        function shareToGmail() {
+            const subject = 'دليل الخدمات الطبية - المنصة الشاملة للخدمات الطبية في المغرب';
+            const body = `مرحباً،\n\nأود مشاركة هذا التطبيق الرائع معك:\n\nدليل الخدمات الطبية - المنصة الشاملة للخدمات الطبية في المغرب 🏥🇲🇦\n\nيضم التطبيق:\n• دليل الأطباء المعتمدين\n• دليل الصيدليات\n• دليل المصحات والمراكز الطبية\n• دليل المختبرات والتحاليل الطبية\n\nيمكنك تحميله من هنا: ${playStoreUrl}\n\nمع أطيب التحيات`;
+            const url = `https://mail.google.com/mail/?view=cm&fs=1&su=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.open(url, '_blank');
+            closeShareModal();
+        }
+
+        function shareToTelegram() {
+            const text = `اكتشف دليل الخدمات الطبية - المنصة الشاملة للخدمات الطبية في المغرب 🏥🇲🇦\n\nأطباء • صيدليات • مصحات • مختبرات\n\n${playStoreUrl}`;
+            const url = `https://t.me/share/url?url=${encodeURIComponent(playStoreUrl)}&text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+            closeShareModal();
+        }
+
+        // إغلاق الرسائل المنبثقة عند النقر خارجها
+        window.onclick = function(event) {
+            const shareModal = document.getElementById('shareModal');
+            const infoModal = document.getElementById('infoModal');
+            const registrationModal = document.getElementById('registrationModal');
             
-            displayDoctors(sortDoctorsAlphabetically(filtered));
-        }
-
-        function performSearch() {
-            filterDoctors();
-        }
-
-        // Initialize the page with alphabetically sorted doctors
-        const sortedDoctors = sortDoctorsAlphabetically(doctors);
-        displayDoctors(sortedDoctors);
-
-        // Search functionality
-        document.getElementById('searchInput').addEventListener('input', filterDoctors);
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
+            if (event.target === shareModal) {
+                shareModal.style.display = 'none';
             }
+            if (event.target === infoModal) {
+                infoModal.style.display = 'none';
+            }
+            if (event.target === registrationModal) {
+                registrationModal.style.display = 'none';
+            }
+        }
+
+        // تفعيل الرسوم المتحركة عند تحميل الصفحة
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((element, index) => {
+                setTimeout(() => {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }, index * 150);
+            });
         });
 
-        // إضافة event listeners بعد تحميل الصفحة
+        // تأثير تفاعلي عند النقر على الأيقونة
         document.addEventListener('DOMContentLoaded', function() {
-            // City filter functionality - للأزرار جميعها (الأساسية والمخفية)
-            function addCityButtonListeners() {
-                document.querySelectorAll('.city-btn').forEach(btn => {
-                    btn.addEventListener('click', function() {
-                        document.querySelectorAll('.city-btn').forEach(b => b.classList.remove('active'));
-                        this.classList.add('active');
-                        currentCity = this.dataset.city;
-                        filterDoctors();
-                    });
+            const headerIcon = document.querySelector('.header-icon');
+            if (headerIcon) {
+                headerIcon.addEventListener('click', function() {
+                    this.style.transform = 'scale(1.1) rotate(5deg)';
+                    setTimeout(() => {
+                        this.style.transform = 'scale(1) rotate(0deg)';
+                    }, 200);
                 });
             }
-
-            // تشغيل الدالة في البداية
-            addCityButtonListeners();
-
-            // إعادة تشغيل الدالة عند إظهار المدن المخفية
-            const originalToggle = window.toggleMoreCities;
-            window.toggleMoreCities = function() {
-                originalToggle();
-                // إعادة إضافة listeners للأزرار الجديدة
-                setTimeout(addCityButtonListeners, 100);
-            };
-
-            // Add animations
-            const cards = document.querySelectorAll('.doctor-card');
-            cards.forEach((card, index) => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                setTimeout(() => {
-                    card.style.transition = 'all 0.5s ease';
-                    card.style.opacity = '1';
-                    card.style.transform = 'translateY(0)';
-                }, index * 100);
-            });
         });
     </script>
 </body>
